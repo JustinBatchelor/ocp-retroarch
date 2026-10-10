@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+until [ -s "${XDG_RUNTIME_DIR}/container-env" ]; do sleep 0.5; done
+source "${XDG_RUNTIME_DIR}/container-env"
+until [ -S "/tmp/.X11-unix/X${DISPLAY#*:}" ]; do sleep 0.5; done
+exec openbox

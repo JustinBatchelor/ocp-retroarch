@@ -1,0 +1,15 @@
+{{- range $name, $size := dict "library" .Values.storage.librarySize "state" .Values.storage.stateSize }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: retroarch-{{ $name }}
+  annotations:
+    helm.sh/resource-policy: keep
+spec:
+  accessModes: [ReadWriteMany]
+  storageClassName: {{ $.Values.storage.className | quote }}
+  resources:
+    requests:
+      storage: {{ $size }}
+{{- end }}

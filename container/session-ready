@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+curl --fail --silent --max-time 3 http://127.0.0.1:8080/api/health >/dev/null
+pgrep -x retroarch >/dev/null
+test -S /tmp/.X11-unix/X20
+test -w /home/ubuntu/.config/retroarch/saves

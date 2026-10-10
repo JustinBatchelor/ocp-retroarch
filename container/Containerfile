@@ -1,0 +1,51 @@
+ARG SELKIES_BASE
+FROM ${SELKIES_BASE}
+USER 0
+SHELL ["/bin/sh", "-c"]
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    retroarch retroarch-assets libretro-core-info openbox \
+    mesa-utils mesa-vulkan-drivers mesa-va-drivers vainfo vulkan-tools \
+    ffmpeg libsdl2-2.0-0 libopenal1 libglu1-mesa libnss3 libnspr4 \
+    libgomp1 libusb-1.0-0 libpcap0.8t64 python3 procps unzip ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+COPY vendor/core-bundle/ /opt/retroarch/core-bundle/
+COPY cores.lock.json /opt/retroarch/cores.lock.json
+COPY container/retroarch.cfg /opt/retroarch/retroarch.cfg
+COPY container/controller.cfg /opt/retroarch/controller.cfg
+COPY container/session-entrypoint /usr/local/bin/session-entrypoint
+COPY container/run-retroarch /etc/service/retroarch/run
+COPY container/run-openbox /etc/service/openbox/run
+COPY container/session-ready container/stop-retroarch container/verify-gpu /usr/local/bin/
+COPY scripts/core-bundle.py /usr/local/bin/core-bundle
+RUN chmod 755 /usr/local/bin/session-entrypoint /usr/local/bin/session-ready \
+    /usr/local/bin/stop-retroarch /usr/local/bin/verify-gpu /usr/local/bin/core-bundle \
+    /etc/service/retroarch/run /etc/service/openbox/run \
+    && chown -R 1000:1000 /etc/service/retroarch /etc/service/openbox \
+    && python3 /usr/local/bin/core-bundle verify --root /opt/retroarch \
+    && dpkg-query -W > /opt/retroarch/packages.tsv
+ENV PASSWD="" \
+    TZ="America/New_York" \
+    START_LXQT="false" \
+    SELKIES_WAYLAND="false" \
+    SELKIES_MODE="websockets" \
+    SELKIES_ENABLE_HTTPS="false" \
+    SELKIES_ENABLE_BASIC_AUTH="true" \
+    SELKIES_ENABLE_DUAL_MODE="false" \
+    SELKIES_ENCODER="h264enc" \
+    SELKIES_VIDEO_FULLCOLOR="false" \
+    SELKIES_VIDEO_10BIT="false" \
+    SELKIES_VIDEO_STREAMING_MODE="true" \
+    SELKIES_RATE_CONTROL_MODE="cbr" \
+    SELKIES_USE_CPU="false" \
+    SELKIES_GAMEPAD_ENABLED="true" \
+    SELKIES_GAMEPAD_ON_START="true" \
+    SELKIES_UINPUT_GAMEPAD="false" \
+    SELKIES_COMMAND_ENABLED="false" \
+    SELKIES_MICROPHONE_ENABLED="false" \
+    SELKIES_WEBCAM_ENABLED="false" \
+    SELKIES_FILE_MANAGER_PATH="/library" \
+    SELKIES_ENABLE_SHARING="false" \
+    SELKIES_ENABLE_INTERNAL_TURN="false"
+USER 1000:1000
+ENTRYPOINT ["/usr/local/bin/session-entrypoint"]

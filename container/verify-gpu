@@ -1,0 +1,17 @@
+#!/bin/bash
+set -euo pipefail
+export DISPLAY=:20
+device="${SELKIES_ENCODE_DRI:-/dev/dri/renderD128}"
+test -r "$device" && test -w "$device"
+glxinfo -B > /tmp/retroarch-gl.txt
+cat /tmp/retroarch-gl.txt
+if grep -Eiq 'llvmpipe|softpipe|software rasterizer' /tmp/retroarch-gl.txt; then
+    echo 'OpenGL is using software rendering' >&2; exit 1
+fi
+vulkaninfo --summary
+vainfo --display drm --device "$device"
+# A real hardware encode, not just an encoder capability listing.
+ffmpeg -hide_banner -loglevel warning -vaapi_device "$device" \
+    -f lavfi -i testsrc2=size=1920x1080:rate=60 -t 3 \
+    -vf 'format=nv12,hwupload' -c:v h264_vaapi -b:v 15M -f null -
+echo 'OpenGL and VA-API encode checks passed; inspect Vulkan device and active Selkies stream statistics separately.'

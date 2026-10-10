@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+# Prevent the supervisor restarting RetroArch while it flushes state.
+s6-svc -d /etc/service/retroarch
+for attempt in $(seq 1 30); do
+    pgrep -x retroarch >/dev/null || exit 0
+    sleep 1
+done
+echo 'RetroArch did not exit within 30 seconds' >&2
+exit 1

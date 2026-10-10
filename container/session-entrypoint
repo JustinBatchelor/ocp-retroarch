@@ -1,0 +1,25 @@
+#!/bin/bash
+set -euo pipefail
+: "${SELKIES_BASIC_AUTH_PASSWORD:?A personal login is required}"
+test "${SELKIES_BASIC_AUTH_PASSWORD}" != mypasswd
+mkdir -p /library/{roms,bios,incoming,core-bundles} \
+    /home/ubuntu/.config/retroarch/{autoconfig/sdl2,remaps,playlists,saves,states,screenshots,logs}
+bundle_id=$(python3 -c 'import json; print(json.load(open("/opt/retroarch/cores.lock.json"))["bundle_id"])')
+bundle_path="/library/core-bundles/${bundle_id}"
+if [ ! -f "${bundle_path}/.complete" ]; then
+    mkdir -p "${bundle_path}"
+    cp -a /opt/retroarch/core-bundle/. "${bundle_path}/"
+    cp /opt/retroarch/cores.lock.json "${bundle_path}/cores.lock.json"
+    touch "${bundle_path}/.complete"
+fi
+# Select exactly the bundle built into this image. Older bundles survive rollback.
+ln -sfn "${bundle_path}" /home/ubuntu/.config/retroarch/core-bundle
+test -f /home/ubuntu/.config/retroarch/retroarch.cfg || \
+    cp /opt/retroarch/retroarch.cfg /home/ubuntu/.config/retroarch/retroarch.cfg
+profile=/home/ubuntu/.config/retroarch/autoconfig/sdl2/Selkies.cfg
+# Migrate only the exact initial generated profile; preserve user remaps.
+if [ ! -f "$profile" ] || [ "$(sha256sum "$profile" | cut -d ' ' -f1)" = cb09ecd61443c79e5588593747621ef3fee70eddddfc584dc52d392804323626 ]; then
+    cp /opt/retroarch/controller.cfg "$profile"
+fi
+ln -sfn /library/incoming /home/ubuntu/Downloads
+exec /etc/container-entrypoint.sh

@@ -1,0 +1,1224 @@
+{
+  "date": "2026-10-10",
+  "bundle": "linux-x86_64-cc958ce52a203870",
+  "scope": "Native Linux library loading with RetroArch common dependencies; does not test games or BIOS files",
+  "passed": 241,
+  "total": 243,
+  "cores": [
+    {
+      "core": "2048_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "3dengine_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "81_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "DoubleCherryGB_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "a5200_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "amiarcadia_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "amiberry_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "anarch_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "applewin_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "ardens_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "arduous_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "atari800_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "azahar_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "b2_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "bbkemu_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "bk_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "blastem_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "bluemsx_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "boom3_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "boom3_xp_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "bsnes-jg_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "bsnes2014_accuracy_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "bsnes2014_balanced_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "bsnes2014_performance_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "bsnes_cplusplus98_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "bsnes_hd_beta_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "bsnes_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "bsnes_mercury_accuracy_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "bsnes_mercury_balanced_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "bsnes_mercury_performance_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "cannonball_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "cap32_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "cdi2015_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "cemu_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "chailove_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "citra2018_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "citra_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "clownmdemu_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "craft_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "crocods_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "desmume2015_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "desmume_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "dice_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "dingooemu_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "dinothawr_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "dirksimple_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "dolphin_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "dosbox_core_libretro.so",
+      "loadable": true,
+      "detail": "[libretro ERROR] Failed to open ALSA sequencer. Error code: -2."
+    },
+    {
+      "core": "dosbox_libretro.so",
+      "loadable": true,
+      "detail": "[libretro ERROR] Failed to open ALSA sequencer. Error code: -2."
+    },
+    {
+      "core": "dosbox_pure_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "dosbox_svn_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "doukutsu_rs_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "easyrpg_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "ecwolf_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "emuscv_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "ep128emu_core_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "fbalpha2012_cps1_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "fbalpha2012_cps2_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "fbalpha2012_cps3_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "fbalpha2012_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "fbalpha2012_neogeo_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "fbalpha_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "fbneo_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "fceumm_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "fixgb_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "fixnes_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "flycast_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "fmsx_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "freechaf_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "freeintv_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "frodo_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "fsuae_libretro.so",
+      "loadable": false,
+      "detail": "OSError: /opt/retroarch/core-bundle/cores/fsuae_libretro.so: undefined symbol: esp_scsi_init"
+    },
+    {
+      "core": "fuse_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "galaksija_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "gam4980_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "gambatte_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "gearboy_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "gearcoleco_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "geargrafx_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "gearlynx_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "gearsystem_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "genesis_plus_gx_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "genesis_plus_gx_wide_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "geolith_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "gme_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "gong_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "gpsp_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "gw_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "handy_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "hatari2014_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "hatari_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "hatarib_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "hbmame_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "holani_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "irogb_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "jaxe_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "jollycv_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "jumpnbump_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "kronos_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "lowresnx_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "lutro_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "m2000_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mame2000_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mame2003_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mame2003_midway_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mame2003_plus_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mame2010_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mame2015_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mame2016_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mame_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mcsoftserve_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mednafen_gba_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mednafen_lynx_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mednafen_ngp_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mednafen_pce_fast_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mednafen_pce_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mednafen_pcfx_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mednafen_psx_hw_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mednafen_psx_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mednafen_saturn_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mednafen_snes_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mednafen_supafaust_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mednafen_supergrafx_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mednafen_vb_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mednafen_wswan_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "melonds_libretro.so",
+      "loadable": false,
+      "detail": "OSError: /opt/retroarch/core-bundle/cores/melonds_libretro.so: cannot enable executable stack as shared object requires: Invalid argument"
+    },
+    {
+      "core": "melondsds_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mesen-s_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mesen2_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mesen_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "meteor_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mgba_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "minivmac_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mojozork_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mrboom_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mu_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "mupen64plus_next_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "native32emu_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "nekop2_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "neocd_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "nestopia_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "nicaiemu_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "noods_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "np2kai_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "nside_sfc_balanced_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "nuance_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "numero_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "nxengine_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "o2em_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "oberon_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "omicron_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "openlara_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "opera_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "panda3ds_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "parallel_n64_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "pcee2_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "pcem_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "pcsx2_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "pcsx_rearmed_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "pd777_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "picodrive_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "play_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "playdiaemu_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "pocketcdg_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "pokemini_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "pokketstation_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "potator_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "ppsspp_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "prboom_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "prosystem_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "puae2021_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "puae_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "px68k_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "qemu_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "quasi88_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "quicknes_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "race_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "radio_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "reminiscence_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "remotejoy_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "retro8_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "romcleaner_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "rpcs3_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "rust_dos_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "rustynes_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "same_cdi_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "sameboy_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "sameduck_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "scummvm_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "skyemu_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "smsplus_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "snes9x2002_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "snes9x2005_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "snes9x2005_plus_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "snes9x2010_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "snes9x_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "spmp8000emu_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "squirreljme_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "stella2014_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "stella2023_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "stella_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "superbroswar_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "supermodel_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "swanstation_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "tamalibretro_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "tgbdual_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "theodore_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "thepowdertoy_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "tia_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "tic80_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "tyrquake_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "uw8_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "uzem_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vaporspec_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vba_next_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vbam_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vecx_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vemulator_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vice_x128_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vice_x64_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vice_x64sc_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vice_xcbm2_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vice_xcbm5x0_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vice_xpet_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vice_xplus4_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vice_xscpu64_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vice_xvic_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "video_processor_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vircon32_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "virtualjaguar_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "virtualxt_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vitaquake2-rogue_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vitaquake2-xatrix_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vitaquake2-zaero_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vitaquake2_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "vitaquake3_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "wasm4_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "wqxemu_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "x1_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "xrick_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "yabasanshiro_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "yabause_libretro.so",
+      "loadable": true,
+      "detail": ""
+    },
+    {
+      "core": "ymir_libretro.so",
+      "loadable": true,
+      "detail": ""
+    }
+  ]
+}

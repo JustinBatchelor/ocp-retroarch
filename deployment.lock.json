@@ -1,0 +1,10 @@
+{
+  "image": {
+    "digest": "sha256:599c3bb43fb7d5af13139af6d5ccb27d88ddaaa4a3d954d524c6db5589a487de"
+  },
+  "gpu": {
+    "plugin": {
+      "digest": "sha256:092a95fcaab7112eb320542b20b5b345316b4b7dc6bfe178deadcedb76cd299e"
+    }
+  }
+}

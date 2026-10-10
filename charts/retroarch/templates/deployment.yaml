@@ -1,0 +1,116 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: retroarch
+spec:
+  replicas: {{ .Values.replicas }}
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: retroarch
+  template:
+    metadata:
+      labels:
+        app: retroarch
+    spec:
+      serviceAccountName: retroarch
+      automountServiceAccountToken: false
+      nodeSelector:
+        kubernetes.io/hostname: {{ .Values.node }}
+      terminationGracePeriodSeconds: 45
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+        supplementalGroups: {{ .Values.gpu.supplementalGroups | toJson }}
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: session
+          image: "{{ .Values.image.repository }}@{{ required "image.digest must be pinned" .Values.image.digest }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: [ALL]
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            - name: SELKIES_BASIC_AUTH_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.authSecret }}
+                  key: username
+            - name: SELKIES_BASIC_AUTH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.authSecret }}
+                  key: password
+            - name: SELKIES_MANUAL_WIDTH
+              value: {{ .Values.stream.width | quote }}
+            - name: SELKIES_MANUAL_HEIGHT
+              value: {{ .Values.stream.height | quote }}
+            - name: SELKIES_FRAMERATE
+              value: {{ .Values.stream.fps | quote }}
+            - name: SELKIES_VIDEO_BITRATE
+              value: {{ .Values.stream.bitrate | quote }}
+            - name: SELKIES_ENCODE_DRI
+              value: {{ .Values.gpu.renderDevice | quote }}
+          resources:
+            requests:
+              cpu: {{ .Values.resources.requests.cpu | quote }}
+              memory: {{ .Values.resources.requests.memory }}
+              {{ .Values.gpu.resourceName }}: 1
+            limits:
+              memory: {{ .Values.resources.limits.memory }}
+              {{ .Values.gpu.resourceName }}: 1
+          startupProbe:
+            httpGet:
+              path: /api/health
+              port: http
+            failureThreshold: 90
+            periodSeconds: 5
+          readinessProbe:
+            exec:
+              command: [/usr/local/bin/session-ready]
+            periodSeconds: 15
+            timeoutSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: http
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 5
+          lifecycle:
+            preStop:
+              exec:
+                command: [/usr/local/bin/stop-retroarch]
+          volumeMounts:
+            - name: library
+              mountPath: /library
+            - name: state
+              mountPath: /home/ubuntu
+            - name: shm
+              mountPath: /dev/shm
+            - name: input
+              mountPath: /dev/input
+      volumes:
+        - name: library
+          persistentVolumeClaim:
+            claimName: retroarch-library
+        - name: state
+          persistentVolumeClaim:
+            claimName: retroarch-state
+        - name: shm
+          emptyDir:
+            medium: Memory
+            sizeLimit: 2Gi
+        - name: input
+          emptyDir:
+            medium: Memory
+            sizeLimit: 1Mi

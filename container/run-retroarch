@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+until [ -s "${XDG_RUNTIME_DIR}/container-env" ]; do sleep 0.5; done
+source "${XDG_RUNTIME_DIR}/container-env"
+until [ -S "/tmp/.X11-unix/X${DISPLAY#*:}" ] && \
+    [ -S "${PULSE_RUNTIME_PATH}/native" ]; do sleep 0.5; done
+cd /home/ubuntu
+exec retroarch --verbose --menu --config /home/ubuntu/.config/retroarch/retroarch.cfg

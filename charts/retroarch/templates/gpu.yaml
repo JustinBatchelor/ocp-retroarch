@@ -1,0 +1,77 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: retroarch-gpu-plugin
+automountServiceAccountToken: false
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: retroarch-gpu-plugin-scc
+rules:
+  - apiGroups: [security.openshift.io]
+    resources: [securitycontextconstraints]
+    resourceNames: [privileged]
+    verbs: [use]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: retroarch-gpu-plugin-scc
+subjects:
+  - kind: ServiceAccount
+    name: retroarch-gpu-plugin
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: retroarch-gpu-plugin-scc
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: retroarch-gpu-plugin
+spec:
+  selector:
+    matchLabels:
+      app: retroarch-gpu-plugin
+  template:
+    metadata:
+      labels:
+        app: retroarch-gpu-plugin
+    spec:
+      serviceAccountName: retroarch-gpu-plugin
+      automountServiceAccountToken: false
+      nodeSelector:
+        kubernetes.io/hostname: {{ .Values.node }}
+      containers:
+        - name: plugin
+          image: "{{ .Values.gpu.plugin.repository }}@{{ required "gpu.plugin.digest must be pinned" .Values.gpu.plugin.digest }}"
+          args:
+            - --domain=gaming.batchelor.live
+            - --device
+            - {{ dict "name" "amd-gpu" "groups" (list (dict "count" 1 "paths" (list (dict "path" .Values.gpu.renderDevice) (dict "path" .Values.gpu.cardDevice)))) | toJson | quote }}
+          securityContext:
+            privileged: true
+            runAsUser: 0
+            readOnlyRootFilesystem: true
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              memory: 128Mi
+          volumeMounts:
+            - name: devices
+              mountPath: /dev
+              readOnly: true
+            - name: kubelet
+              mountPath: /var/lib/kubelet/device-plugins
+      volumes:
+        - name: devices
+          hostPath:
+            path: /dev
+            type: Directory
+        - name: kubelet
+          hostPath:
+            path: /var/lib/kubelet/device-plugins
+            type: Directory

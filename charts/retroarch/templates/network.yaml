@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: retroarch
+spec:
+  selector:
+    app: retroarch
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: retroarch
+  annotations:
+    haproxy.router.openshift.io/ip_allowlist: {{ required "At least one trusted CIDR is required" (join " " .Values.route.allowedCIDRs) | quote }}
+    haproxy.router.openshift.io/set-forwarded-headers: replace
+    haproxy.router.openshift.io/timeout-tunnel: {{ .Values.route.tunnelTimeout | quote }}
+spec:
+  host: {{ .Values.route.host }}
+  to:
+    kind: Service
+    name: retroarch
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: retroarch-ingress
+spec:
+  podSelector:
+    matchLabels:
+      app: retroarch
+  policyTypes: [Ingress]
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              policy-group.network.openshift.io/ingress: ""
+      ports:
+        - protocol: TCP
+          port: 8080

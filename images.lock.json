@@ -1,0 +1,7 @@
+{
+  "selkies_base": "ghcr.io/selkies-project/selkies/base@sha256:606689f4e248b9d66f647e8a22a043fdd913d65db01870d986eda70752571a3f",
+  "selkies_source_reviewed": "d6b40a5bd8f95a1a62352af980644d85f6ba3990",
+  "device_plugin_tag": "docker.io/squat/generic-device-plugin:2cc50b0",
+  "device_plugin_image": "docker.io/squat/generic-device-plugin@sha256:085889f5bf1a734c3b924833065e4874d8b1064e1f98330f2d089046975ed362",
+  "device_plugin_source": "2cc50b05d4d2f248b1b61dd4e392c51cb07e4ed1"
+}

@@ -1,0 +1,35 @@
+image:
+  repository: image-registry.openshift-image-registry.svc:5000/retroarch/retroarch
+  digest: ""
+  pullPolicy: IfNotPresent
+node: worker-0
+replicas: 1
+route:
+  host: retroarch.apps.sno.batchelor.live
+  allowedCIDRs:
+    - 10.45.45.0/24
+  tunnelTimeout: 1h
+authSecret: retroarch-login
+storage:
+  className: truenas-nfs
+  librarySize: 250Gi
+  stateSize: 20Gi
+resources:
+  requests:
+    cpu: "4"
+    memory: 8Gi
+  limits:
+    memory: 16Gi
+gpu:
+  resourceName: gaming.batchelor.live/amd-gpu
+  renderDevice: /dev/dri/renderD128
+  cardDevice: /dev/dri/card0
+  supplementalGroups: [39, 797]
+  plugin:
+    repository: image-registry.openshift-image-registry.svc:5000/retroarch/generic-device-plugin
+    digest: ""
+stream:
+  width: 1920
+  height: 1080
+  fps: 60
+  bitrate: 15000

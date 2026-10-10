@@ -1,0 +1,6 @@
+recovery/
+vendor/
+.cache/
+__pycache__/
+*.pyc
+credentials.txt
