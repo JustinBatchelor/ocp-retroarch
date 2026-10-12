@@ -36,7 +36,25 @@ class DeploymentContract(unittest.TestCase):
     def test_route_and_auth_boundary(self):
         route = self.resources["Route", "retroarch"]
         self.assertEqual(route["spec"]["tls"]["insecureEdgeTerminationPolicy"], "Redirect")
-        self.assertEqual(route["metadata"]["annotations"]["haproxy.router.openshift.io/ip_allowlist"], "10.45.45.0/24")
+        self.assertEqual(route["metadata"]["annotations"]["haproxy.router.openshift.io/ip_allowlist"],
+                         "10.0.0.0/8 172.16.0.0/12 192.168.0.0/16")
         pod = self.resources["Deployment", "retroarch"]["spec"]["template"]["spec"]
         password = next(e for e in pod["containers"][0]["env"] if e["name"] == "SELKIES_BASIC_AUTH_PASSWORD")
         self.assertEqual(password["valueFrom"]["secretKeyRef"]["name"], "retroarch-login")
+
+    def test_route_allowlist_override(self):
+        rendered = subprocess.check_output(
+            ["helm", "template", "retroarch", str(ROOT / "charts/retroarch")]
+            + PINS + ["--set-json", 'route.allowedCIDRs=["10.45.45.0/24","192.168.50.0/24"]'],
+            text=True)
+        route = next(d for d in yaml.safe_load_all(rendered) if d and d["kind"] == "Route")
+        self.assertEqual(route["metadata"]["annotations"]["haproxy.router.openshift.io/ip_allowlist"],
+                         "10.45.45.0/24 192.168.50.0/24")
+
+    def test_empty_route_allowlist_refused(self):
+        result = subprocess.run(
+            ["helm", "template", "retroarch", str(ROOT / "charts/retroarch")]
+            + PINS + ["--set-json", "route.allowedCIDRs=[]"],
+            capture_output=True, text=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("allowedCIDRs", result.stderr)

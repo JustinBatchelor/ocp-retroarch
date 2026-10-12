@@ -1,9 +1,11 @@
 # Validation record
 
-Deployment completed on **2026-10-10** at
+Initial deployment completed on **2026-10-10** at
 https://retroarch.apps.sno.batchelor.live, Helm release `retroarch`, revision 2.
 The owner confirmed that the real Xbox controller works for menu navigation
 through the Route. The session was left running for their use.
+The private-IPv4 access update was deployed on **2026-10-11**, revision 3;
+affected-device VPN acceptance remains pending as detailed below.
 
 ## Deployed configuration
 
@@ -18,7 +20,7 @@ through the Route. The session was left running for their use.
   are recorded in [cores.lock.json](../cores.lock.json).
 - Bound `truenas-nfs` PVCs: 250 GiB library and 20 GiB state. Both survive Helm
   uninstall; the requested capacities do not enforce NFS quotas.
-- Secret-backed personal authentication, trusted edge TLS, LAN source allowlist,
+- Secret-backed personal authentication, trusted edge TLS, private-IPv4 source allowlist,
   router-only application ingress. Application runs non-root under its dedicated
   SCC, without host mounts, API token, added capabilities, or privilege escalation.
   The device plugin has a separate privileged service account.
@@ -50,6 +52,41 @@ The two unavailable cores in this bundle are `fsuae_libretro.so` (unresolved
 the runtime). PUAE and melonDS DS are included alternatives, with gameplay still
 to be tested. See the [full native load report](core-compatibility.json).
 
+## Private-IPv4 access update — 2026-10-11
+
+The owner reported that the RetroArch page would not load over the home router
+VPN while AAP and the cluster console remained reachable. Live inspection found
+RetroArch restricted to `10.45.45.0/24`, with no route IP allowlist on AAP or the
+console. A VPN source-address mismatch is the leading explanation; the affected
+VPN's source address has not been captured.
+
+At the owner's request, Helm revision 3 allows `10.0.0.0/8`, `172.16.0.0/12`, and
+`192.168.0.0/16`. This admits any reachable private-IPv4 source to the login
+screen. Authentication remains required; IPv6 and other source ranges are not
+included.
+
+| Check | Result and evidence |
+| --- | --- |
+| Local validation | `scripts/check.sh` passed: shell syntax, Helm lint, ten unit tests, and core-bundle integrity. Tests cover default private ranges, custom overrides, and rejection of an empty allowlist. |
+| Change comparison | Parsed rendered manifests matched the previous Helm release except for the Route allowlist. Pinned images and pod configuration were unchanged. |
+| Cluster validation and deployment | Server-side dry run and deployment preflight passed. `scripts/deploy.sh -f deployment.lock.json` deployed revision 3 successfully. Existing GPU-plugin PodSecurity warnings were unchanged. |
+| Live route | Verified all three private ranges, edge TLS with HTTP redirect, forwarded-header replacement, and the one-hour tunnel timeout. |
+| DNS and HTTPS from the execution Mac | Host resolved to `10.45.45.6`; certificate verification passed; anonymous request returned 401 and authenticated request returned 200. These requests did not open or take over the streaming session. |
+| Running session | Application pod UID, image ID, and zero restart count matched the pre-deployment baseline; the pod remained ready. |
+| VPN and gameplay | Pending owner test from the affected VPN device: login, video, audio, controller input, browser reload/reconnect, and ten minutes of use. The execution Mac's successful request does not establish affected-device VPN acceptance or a separate LAN gameplay result. |
+| Denied-source connection | Pending: no suitable connection outside the allowed ranges was available. The configured allowlist was verified, but no live negative-source test was performed. |
+
+Local evidence is in ignored `recovery/vpn-private-ipv4/baseline.json` and
+`verification.json`. Rollback target is revision 2:
+`helm rollback retroarch 2 -n retroarch --wait`; revert the chart's allowlist
+to `10.45.45.0/24` as well if rollback is needed.
+
+If the VPN page still fails to load, compare DNS and TCP/TLS connectivity with
+AAP and inspect router configuration/available ingress logs for the actual VPN
+source. If login succeeds but streaming fails, diagnose WebSocket transport
+separately. Do not mark the VPN issue resolved until the affected-device test
+passes.
+
 ## Manual acceptance still required
 
 - Beyond confirmed menu navigation, verify Xbox Series controller over Bluetooth
@@ -67,8 +104,8 @@ to be tested. See the [full native load report](core-compatibility.json).
 - Verify the newly created game save and playlist after a subsequent replacement
   and upgrade. Configuration/profile persistence and scratch backup restoration
   have passed; a production state restore has not been performed.
-- VPN source addressing and allowlist access; results must be recorded separately
-  from LAN use. Only `10.45.45.0/24` is currently allowed.
+- VPN source addressing and access under the private-IPv4 allowlist; results
+  must be recorded separately from LAN use. See the revision 3 update above.
 - Controlled GPU unavailability, storage outage, and worker restart drills. The
   recovery procedure is documented in the README but outage drills remain pending.
 

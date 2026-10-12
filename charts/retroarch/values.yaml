@@ -7,7 +7,9 @@ replicas: 1
 route:
   host: retroarch.apps.sno.batchelor.live
   allowedCIDRs:
-    - 10.45.45.0/24
+    - 10.0.0.0/8
+    - 172.16.0.0/12
+    - 192.168.0.0/16
   tunnelTimeout: 1h
 authSecret: retroarch-login
 storage:

@@ -6,7 +6,8 @@ HTTPS/WebSockets at **https://retroarch.apps.sno.batchelor.live**. See
 
 ## Use
 
-1. Connect to the LAN or VPN. Run `scripts/show-login.sh` in your own terminal to
+1. Connect to the LAN or home VPN using private IPv4 addressing (see
+   [Security and networking](#security-and-networking)). Run `scripts/show-login.sh` in your own terminal to
    retrieve the generated personal login from OpenShift.
 2. Pair an Xbox Series X/S controller with the Mac over Bluetooth. Open the Route
    in current Chrome, sign in, click the session to enable audio, and press a
@@ -167,10 +168,19 @@ TrueNAS dataset itself. Keep host OS storage out of the game library.
 ## Security and networking
 
 The Route uses the cluster certificate, redirects HTTP to HTTPS, replaces
-forwarded headers, and permits `10.45.45.0/24`. VPN clients must arrive from that
-range or have their trusted source CIDR explicitly added through Helm values.
-Do not infer a VPN CIDR from a client-supplied HTTP header. Non-LAN requests can
-be dropped before HTTP authentication, appearing as an empty response.
+forwarded headers, and permits all private IPv4 ranges: `10.0.0.0/8`,
+`172.16.0.0/12`, and `192.168.0.0/16`. Any client in those ranges that can reach
+the cluster can reach the login screen; authentication is still required.
+This includes the LAN and home VPNs whose source address reaches ingress within
+those ranges. IPv6 and other source ranges are not included. Override
+`route.allowedCIDRs` through Helm values to use a narrower policy.
+
+The allowlist uses the connection source seen by ingress, including any router
+address translation. Do not infer a VPN CIDR from a client-supplied HTTP header.
+Requests outside the allowed ranges can be dropped before HTTP authentication,
+appearing as an empty response. If the page never loads over VPN, compare DNS
+and TCP/TLS connectivity with AAP, then check the VPN source address at ingress.
+If login works but streaming fails, inspect the browser's WebSocket connections.
 
 The application runs as UID/GID 1000 with no API token, no capabilities, no host
 mounts, and no privilege escalation. A dedicated SCC permits the fixed UID and
