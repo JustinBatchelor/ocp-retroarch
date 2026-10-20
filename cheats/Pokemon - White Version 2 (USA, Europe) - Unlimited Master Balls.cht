@@ -1,0 +1,16 @@
+# Pokemon White Version 2 USA/Europe: IRDO, revision 0. Not original White.
+# Emulator-handled Action Replay; disabled until loaded and enabled by the user.
+# Adapted from libretro-database's White Version 2 USA/Europe "All Items" code:
+# https://github.com/libretro/libretro-database/blob/master/cht/Nintendo%20-%20Nintendo%20DS/Pokemon%20-%20White%20Version%202%20%28USA%2C%20Europe%29.cht
+# Retains its non-null pointer guard; reduces the inventory loop to one write.
+# First Items-pocket slot at pointer + 0x18A38: Master Ball ID 1, quantity 999.
+# REPLACES the first item stack. Other inventory slots are not written.
+# Save in-game first. With White 2 loaded, Load Cheat File (Replace), enable,
+# then Apply Changes. Resume gameplay and reopen the bag. No buttons required.
+# Do not load SoulSilver cheats in White 2. Avoid sorting/reordering Items while
+# enabled. Disable and Apply Changes to stop refilling; added balls remain.
+cheats = 1
+cheat0_desc = "White 2 - Unlimited Master Balls (999) - REPLACES FIRST ITEM SLOT"
+cheat0_code = "6209A378+00000000+B209A378+00000000+00018A38+03E70001+D2000000+00000000"
+cheat0_enable = false
+cheat0_handler = 0

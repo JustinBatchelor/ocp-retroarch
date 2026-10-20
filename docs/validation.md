@@ -248,6 +248,33 @@ and apply changes before feeding Moomoo or rearranging berries. Moomoo requires
 repeat the five-berry refill if needed. Existing berries in the first slot are
 replaced; all other slots remain untouched by this code.
 
+## White 2 unlimited Master Balls — 2026-10-19
+
+Confirmed the recently loaded White Version 2 ROM is USA/Europe, game code
+`IRDO`, revision `0`, using melonDS DS. Uploaded
+`cheats/Pokemon - White Version 2 (USA, Europe) - Unlimited Master Balls.cht`
+to persistent `~/.config/retroarch/cheats/Nintendo - Nintendo DS/`.
+
+Adapted the [Libretro White Version 2 USA/Europe All Items code](https://github.com/libretro/libretro-database/blob/master/cht/Nintendo%20-%20Nintendo%20DS/Pokemon%20-%20White%20Version%202%20%28USA%2C%20Europe%29.cht)
+to a single four-byte inventory write. The non-null pointer guard at `0x0209A378`
+is retained; pointer-relative `0x18A38` receives `0x03E70001` (Master Ball ID 1,
+quantity 999), without a button condition. This replaces the first Items-pocket
+stack and replenishes while enabled. The file clearly labels the replacement
+and starts disabled with emulator handling.
+
+Synthetic-memory validation checked the pointer guard, item/count encoding,
+single-slot write, and unchanged surrounding bytes. Uploaded SHA-256 matches:
+`5e81eee663407a717605a386297fef9c1f57cb7bb1bbb88bb280fbddd804ba23`.
+Global config, existing cheats, and RetroArch PID `169163` were unchanged.
+Evidence: ignored `recovery/white2-master-balls-cheat/installation.json`.
+In-game replenishment remains untested.
+
+Save in-game with White 2 loaded, use **Load Cheat File (Replace)** to select
+this White 2 file, enable it, and **Apply Changes**. Resume and reopen the bag;
+no button combination is required. Do not load SoulSilver codes in White 2.
+Avoid sorting/reordering Items while enabled. Disable and apply changes to stop
+refilling; the existing balls remain and can be saved.
+
 ## Manual acceptance still required
 
 - Beyond confirmed menu navigation, verify Xbox Series controller over Bluetooth
