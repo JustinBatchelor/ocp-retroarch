@@ -1,0 +1,15 @@
+# SoulSilver USA: IPGE, revision 0. Emulator-handled Action Replay code.
+# Adapted from libretro-database's SoulSilver USA "Poke Balls (Default)":
+# https://github.com/libretro/libretro-database/blob/master/cht/Nintendo%20-%20Nintendo%20DS/Pokemon%20-%20SoulSilver%20Version%20%28USA%29.cht
+# Retains the pointer guard and ONLY the first ball-slot write. No button gate.
+# 0x0001 = Master Ball; 0x03E7 = 999. Replenishes continuously while enabled.
+# REPLACES the first stack in the Poke Balls pocket. Other slots are not written.
+# Save in-game first. Avoid rearranging the ball pocket while this is enabled.
+# Load Cheat File (Append) to keep the Lapras cheat, enable this entry, then
+# Apply Changes. Resume gameplay, then reopen the bag. No LB/RB press required.
+# Disable and Apply Changes to stop refilling; existing balls remain in the bag.
+cheats = 1
+cheat0_desc = "Unlimited Master Balls (999) - REPLACES FIRST BALL SLOT"
+cheat0_code = "6211186C+00000000+B211186C+00000000+0000DCF4+03E70001+D2000000+00000000"
+cheat0_enable = false
+cheat0_handler = 0

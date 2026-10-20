@@ -1,0 +1,17 @@
+# SoulSilver USA: IPGE, revision 0. Emulator-handled Action Replay code.
+# Adapted from libretro-database's SoulSilver USA "Wild Pokemon Modifier v1":
+# https://github.com/libretro/libretro-database/blob/master/cht/Nintendo%20-%20Nintendo%20DS/Pokemon%20-%20SoulSilver%20Version%20%28USA%29.cht
+# Retains the L-button gate and land encounter-table loop; uses species 131 (0x83).
+# Also writes the five surfing species slots and surfing swarm species.
+# Surf offsets derived from the encounter structure (base = 0x32A48 - 0x14):
+# https://github.com/pret/pokeheartgold/blob/master/include/wild_encounter.h
+# Species only: preserves encounter rates, level bytes, and bag contents.
+# Enable and Apply Changes, then hold DS L (Xbox LB) while walking or surfing.
+# Does not force an immediate encounter or bypass Repel. Fishing is not modified.
+# After catching Lapras, disable and Apply Changes. Save in-game and close/reopen
+# content to clear the modified encounter table. Not an automatic one-shot code.
+cheats = 1
+cheat0_desc = "Lapras - grass + SURF v2 - hold L (Xbox LB)"
+cheat0_code = "94000130+FDFF0000+6211186C+00000000+B211186C+00000000+10032A9A+00000083+10032A9E+00000083+10032AA2+00000083+10032AA6+00000083+10032AAA+00000083+10032AF2+00000083+D5000000+00000083+C0000000+00000027+D7000000+00032A48+D2000000+00000000"
+cheat0_enable = false
+cheat0_handler = 0

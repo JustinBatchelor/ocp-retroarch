@@ -13,6 +13,7 @@ COPY vendor/core-bundle/ /opt/retroarch/core-bundle/
 COPY cores.lock.json /opt/retroarch/cores.lock.json
 COPY container/retroarch.cfg /opt/retroarch/retroarch.cfg
 COPY container/controller.cfg /opt/retroarch/controller.cfg
+COPY container/remaps/ /opt/retroarch/remaps/
 COPY container/session-entrypoint /usr/local/bin/session-entrypoint
 COPY container/run-retroarch /etc/service/retroarch/run
 COPY container/run-openbox /etc/service/openbox/run

@@ -110,6 +110,20 @@ Choose **melonDS DS**, since the older **melonDS** binary in this bundle fails
 to load. DS games also need a usable bottom-screen/touch layout; configure that
 under the loaded core's options and test pointer/controller behavior in-game.
 
+For these three cores, player 1 can use either the **D-pad or left analog stick**
+for movement and switch between them during gameplay. The core remaps set
+**Analog to Digital Type → Left Analog (Forced)**; D-pad and keyboard bindings,
+buttons, right-stick settings, and existing sensitivity remain unchanged.
+This applies to all games in these cores, including non-Pokémon games.
+
+To customize this while a game is loaded, open **Quick Menu → Controls →
+Port 1 Controls → Analog to Digital Type**, then use **Controls → Manage Remap
+Files → Save Core Remap File**. Game or content-directory remaps take precedence
+over the core default. Defaults are installed only when the corresponding core
+remap is missing, so saved customizations survive container startup. When remaps
+are installed during a running session, save in-game, close content, and reopen
+it to load the new controls; a pod restart is unnecessary.
+
 Place any required BIOS files in `/library/bios`, preserving the exact filenames
 and any core-specific subdirectories. For example, copy a BIOS from your Mac
 using `oc cp` with `/library/bios/<filename>` as the destination. Uploading it to

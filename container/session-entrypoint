@@ -21,5 +21,13 @@ profile=/home/ubuntu/.config/retroarch/autoconfig/sdl2/Selkies.cfg
 if [ ! -f "$profile" ] || [ "$(sha256sum "$profile" | cut -d ' ' -f1)" = cb09ecd61443c79e5588593747621ef3fee70eddddfc584dc52d392804323626 ]; then
     cp /opt/retroarch/controller.cfg "$profile"
 fi
+# Seed core movement defaults once; retain remaps saved by the user.
+for default_remap in /opt/retroarch/remaps/*/*.rmp; do
+    remap=/home/ubuntu/.config/retroarch/remaps/${default_remap#/opt/retroarch/remaps/}
+    mkdir -p "$(dirname "$remap")"
+    if [ ! -e "$remap" ]; then
+        cp "$default_remap" "$remap"
+    fi
+done
 ln -sfn /library/incoming /home/ubuntu/Downloads
 exec /etc/container-entrypoint.sh
